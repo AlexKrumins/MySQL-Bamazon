@@ -21,30 +21,16 @@ VALUES ("Drinking Straws", "Paper Goods", .99, 5000);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("Unsalted Popcorn", "Grocery", 2.99, 20);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("", "", .99, 100);
+VALUES ("Guitar Strings", "Music", 14.99, 55);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("", "", .99, 100);
+VALUES ("AAA Batteries", "Electronics", 5.99, 90);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("", "", .99, 100);
+VALUES ("PV Amplifier", "Music", 199.99, 6);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("", "", .99, 100);
+VALUES ("Synthetic Cocaine", "Pharmacy", .17, 255);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("", "", .99, 100);
+VALUES ("Monkey Wrench", "Hardware", 17.99, 12);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("", "", .99, 100);
+VALUES ("Heavy Duty Paper Towels", "Paper Goods", 8.99, 60);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("", "", .99, 100);
-
-INSERT INTO products (name, has_pet, pet_name, pet_age)
-VALUES ("Ahmed", TRUE, "Rockington", 100);
-
-INSERT INTO products (name, has_pet, pet_name, pet_age)
-VALUES ("Jacob", TRUE, "Misty", 10);
-
-INSERT INTO products (name, has_pet)
-VALUES ("Peter", false);
-
--- Updates the row where the column name is peter --
-UPDATE products
-SET has_pet = true, pet_name = "Franklin", pet_age = 2
-WHERE name = "Peter";
+VALUES ("Avocados", "Grocery", .99, 88);
