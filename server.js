@@ -95,19 +95,19 @@ connection.query("SELECT * FROM products", function(err, results) {
             function(error) {
               if (error) throw err;
               console.log("Your Order is on the way! Your total will be $" + (chosenItem.price * answer.quantity) + "\n==================================================");
-              startOverPrompt();
+              customerStartOverPrompt();
             }
           );
         }
         else {
           console.log("Unfortunately, there is not enough in stock to fulfill your order\n=================================================================");
-          startOverPrompt();
+          customerStartOverPrompt();
         }
       });
   });
 }
 
-function startOverPrompt() {
+function customerStartOverPrompt() {
     inquirer
         .prompt({
             name: "againOrLogout",
@@ -118,6 +118,60 @@ function startOverPrompt() {
         .then(function(answer) {
             if (answer.againOrLogout === "YES") {
                 customer();
+            } else if (answer.againOrLogout === "LOGOUT") {
+                login();
+            }
+        })
+};
+function manager() {
+    inquirer
+        .prompt({
+            name: "managerTask",
+            type: "list",
+            message: "What task would you like to complete.",
+            choices: ["View your Catalogue of Products", "View your Low Inventory", "Add to your Inventory", "Add a New Product to your Catalogue", "EXIT"]
+        })
+        .then(function(answer) {
+            switch (answer.managerTask) {
+                case "View your Catalogue of Products":
+                managerView();
+                break;
+            
+            case "View your Low Inventory Items":
+                lowInventoryView();
+                break;
+            
+            case "Add to your Inventory":
+                orderInventory();
+                break;
+            
+            case "Add a New Product to your Catalogue":
+                createProduct();
+                break;
+            
+            case "EXIT":
+                login();
+                break;
+            }
+        });
+}
+function managerView() {
+    connection.query("SELECT * FROM products", function(err, results) {
+        if (err) throw err;
+        
+    }
+}
+function managerStartOverPrompt() {
+    inquirer
+        .prompt({
+            name: "againOrLogout",
+            type: "list",
+            message: "Would you like to complete another task?\n========================================",
+            choices: ["YES", "LOGOUT"]
+        })
+        .then(function(answer) {
+            if (answer.againOrLogout === "YES") {
+                manager();
             } else if (answer.againOrLogout === "LOGOUT") {
                 login();
             }
