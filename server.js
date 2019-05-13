@@ -96,7 +96,7 @@ connection.query("SELECT * FROM products", function(err, results) {
             ],
             function(error) {
               if (error) throw err;
-              console.log("Your Order is on the way! Your total will be $" + (chosenItem.price * answer.quantity) + "\n==================================================");
+              console.log("Your Order is on the way! Your total will be $" + (chosenItem.price * answer.quantity).toFixed(2) + "\n==================================================");
               customerStartOverPrompt();
             }
           );
@@ -218,7 +218,7 @@ function orderInventory() {
                 chosenItem = results[i];
               }
             }
-              var newStock_quantity = chosenItem.stock_quantity + answer.quantity;
+              var newStock_quantity = (parseInt(chosenItem.stock_quantity) + parseInt(answer.quantity));
               connection.query(
                 "UPDATE products SET ? WHERE ?",
                 [
